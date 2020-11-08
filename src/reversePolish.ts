@@ -1,38 +1,29 @@
-import type = Mocha.utils.type;
+type MathOperation = '+' | '-' | '*' | '/'
+type NumberAndOperation = number | MathOperation;
+type ReversePolishArray = NumberAndOperation[];
 
-type mathOperation = '+' | '-' | '*' | '/'
-type numbersAndOperations = number | mathOperation;
-type reversePolishArray = numbersAndOperations[];
+let symbolsArray: NumberAndOperation[] = ['+', '-', '*', "/"];
 
-
-let symbolsArray: numbersAndOperations[] = ['+', '-', '*', "/"];
-
-
-function calculateOperation(a: number, b: number, operation: mathOperation): number {
-  // type arithmSymbols = '+' | '-' | '*' | '/';
-  // let test: {[id: arithmSymbols]: number} = {};
-  // let symb: arithmSymbols = '-';
-  // test[symb] = 3 ;
-  // @ts-expect-error
-  let operations: {[id: mathOperation]: (a: number, b: number) => number} = {
+function calculateOperation(a: number, b: number, operation: MathOperation): number {
+  let operations: Record<MathOperation, (a: number, b: number) => number> = {
     '+': (a : number, b: number) => a + b,
     '-': (a : number, b: number) => a - b,
     '*': (a : number, b: number) => a * b,
     '/': (a : number, b: number) => a / b,
   };
-  // @ts-expect-error
   return operations[operation](a,b);
 }
-function calculate(input: reversePolishArray) {
-  let stack: reversePolishArray = [];
+
+function calculate(input: ReversePolishArray) {
+  let stack: ReversePolishArray = [];
   for (let el of input) {
     if (symbolsArray.indexOf(el) >= 0) {
-      let b: numbersAndOperations = stack.pop()!;
-      let a: numbersAndOperations = stack.pop()!;
+      let b: NumberAndOperation = stack.pop()!;
+      let a: NumberAndOperation = stack.pop()!;
       if (typeof a !== 'number' || typeof b !== 'number') {
         throw Error(`Invalid reverse polish string, can't calculate "${a}"${el}"${b}"`);
       } else {
-        let result: number = calculateOperation(a,b, el as mathOperation);
+        let result: number = calculateOperation(a,b, el as MathOperation);
         stack.push(result);
       }
     } else {
