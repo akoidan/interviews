@@ -11,6 +11,7 @@
     "target": "es6",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "outDir": "dist",
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
