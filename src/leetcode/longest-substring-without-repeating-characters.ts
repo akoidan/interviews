@@ -29,7 +29,28 @@
  s consists of English letters, digits, symbols and spaces.
  */
 
+
 export function lengthOfLongestSubstring(s: string): number {
+  let set = new Map();
+  let biggestAmount: number = 0;
+  let lastReset = 0;
+  for (let i = 0; i < s.length; i ++) {
+    let current = s[i];
+    let lastIndexOfCurrentChar = set.get(current);
+    set.set(current, i)
+    if (lastIndexOfCurrentChar != undefined && lastIndexOfCurrentChar >= lastReset) {
+      lastReset = lastIndexOfCurrentChar + 1 ;
+    } else {
+      let newAmount = i - lastReset + 1;
+      if (newAmount > biggestAmount) {
+        biggestAmount = newAmount;
+      }
+    }
+  }
+  return biggestAmount;
+};
+
+export function lengthOfLongestSubstringAlpha(s: string): number {
 
   let set = new Map();
   let biggestAmount: number = 0;
