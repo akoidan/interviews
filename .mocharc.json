@@ -4,6 +4,5 @@
     "ts-node/register",
     "tsconfig-paths/register"
   ],
-  "ui": "bdd",
-  "file": ["test/index.ts"]
+  "ui": "bdd"
 }
