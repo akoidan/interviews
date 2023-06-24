@@ -1,12 +1,14 @@
 import * as chaiAsPromised from "chai-as-promised"; // eslint-disable-line import/no-namespace
 import * as sinonChai from "sinon-chai"; // eslint-disable-line import/no-namespace
-import {expect, use} from "chai";
-import { findErrorNums } from './mismatch';
+import { expect, use } from "chai";
+import { findErrorNums } from 'src/leetcode/mismatch';
+import { missingNumber } from 'src/leetcode/missing.number';
+
 use(sinonChai);
 use(chaiAsPromised);
 
 describe("findErrorNums", () => {
   it("returns true for isomorphic strings", () => {
-    expect(findErrorNums([1,1])).to.be.eq([1,2]);
+    expect(missingNumber([2,1])).to.be.eq(0);
   })
 });

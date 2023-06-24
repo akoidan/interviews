@@ -1,6 +1,7 @@
 import {expect} from "chai";
 import {threeSum} from "../src/leetcode/thre-sum";
 import * as threeSummValues from "./three-sum.json"
+import * as threeSummResult from "./three-sum-result.json"
 
 describe("three sum", () => {
   it("[-1,0,1,2,-1,-4] -> 9", () => {
@@ -10,7 +11,10 @@ describe("three sum", () => {
     expect(threeSum(new Array(3000).fill(0))).deep.eq([[0, 0, 0]])
   });
   it("huge example 1", () => {
-    expect(threeSum(threeSummValues as [])).deep.eq([[0, 0, 0]])
+    console.log(performance.now())
+    const val = threeSum(threeSummValues as []);
+    console.log(performance.now())
+    expect(val).deep.eq(threeSummResult)
   });
   it("huge example 2", () => {
     expect(threeSum([-1, 0, 1, 2, -1, -4])).deep.eq([[-1, -1, 2], [-1, 0, 1]])

@@ -50,29 +50,41 @@ function decreaseOrDelete(map: Map<number, number>, v: number) {
   }
 }
 
+function getValueCount(map: Map<number, number>, c: number) {
+  return map.get(c);
+}
+
+function getC(a: number, b: number) {
+  let c = -(a + b);
+  if (c == -0) {
+    c = 0;
+  }
+  return c;
+}
+
 export function threeSum(nums: number[]): number[][] {
   let results: number[][] = [];
-  let hashResults = new Set();
   let map: Map<number, number> = new Map();
   nums.forEach(n => {
     setOrIncrease(map, n)
   })
+  console.log(performance.now())
+  nums.sort();
+  console.log(performance.now())
   for (let i = 0; i < nums.length; i++) {
     let a = nums[i];
     decreaseOrDelete(map, a)
     for (let j = i + 1; j < nums.length; j++) {
       let b = nums[j];
-      let c = -(a + b);
-      if (c == -0) {
-        c = 0;
-      }
-      if (map.has(c) && (![a,b].includes(c) || map.get(c)! > 1)) {
-        let newEll = [a, c, nums[j]].sort()
-        let strHash = newEll.toString()
-        if (!hashResults.has(strHash)) {
+      let c = getC(a, b);
+      let valueCount =  getValueCount(map, c)
+      if (valueCount != undefined && ((a === c || b === c) && valueCount > 1)) {
+        let newEll = [a, c, nums[j]];
+        // let strHash = newEll.toString()
+        // if (!hashResults.has(strHash)) {
           results.push(newEll)
-          hashResults.add(strHash)
-        }
+          // hashResults.add(strHash)
+        // }
       }
     }
   }
