@@ -37,72 +37,40 @@
 
  * */
 
-class FindMap {
-  private map: Map<string, number> = new Map();
-  private negativeMap: Map<string, number> = new Map();
 
-  public increaseByOne(k: string) {
-    let negValue = this.negativeMap.get(k)
-    let value = this.map.get(k);
-    if (value == undefined && negValue == undefined) {
-      this.negativeMap.set(k, 1)
-      this.map.set(k, 1)
-    } else {
-      if (negValue != undefined) {
-        this.negativeMap.set(k, negValue + 1)
-      }
-      if (negValue! >= 0) {
-        this.map.set(k, negValue! + 1)
-      }
-    }
-  }
-
-  public decreaseByOne(k: string) {
-    let negativeValue = this.negativeMap.get(k)
-    if (negativeValue == 1) {
-      this.map.delete(k);
-      this.negativeMap.set(k, 0)
-    } else if (negativeValue! > 1) {
-      this.map.set(k, negativeValue! - 1)
-      this.negativeMap.set(k, negativeValue! - 1)
-    } else {
-       this.negativeMap.set(k, negativeValue! - 1)
-    }
-  }
-
-  isEmpty(): boolean {
-    return this.map.size == 0;
-  }
-
-  canWeShiftRight(s: string): boolean {
-    return this.negativeMap.has(s);
-  }
-}
-
-export function minWindow(stringValue: string, t: string): string {
-  // Input: s = "ADOBECODEBANC", t = "ABC"
-  // Output: "BANC"
-  let requiredMoreOfCharsMap = new FindMap();
+export function minWindow(s: string, t: string): string {
+  let needCountMap: Map<string, number> = new Map();
+  let haveCount: Map<string, number> = new Map();
   for (let p of t) {
-    requiredMoreOfCharsMap.increaseByOne(p);
+    needCountMap.set(p, (needCountMap.get(p) || 0) + 1);
+    haveCount.set(p, 0);
   }
-
+  let totalCharacterFilled = 0;
+  let totalCharacterNeed = needCountMap.size;
   let result = "";
-  let endIndex = 0;
-  for (let startIndex = 0; startIndex < stringValue.length; startIndex++) {
-    let sElement = stringValue[startIndex];
-    if (requiredMoreOfCharsMap.canWeShiftRight(sElement)) {
-      for (; endIndex < stringValue.length && !requiredMoreOfCharsMap.isEmpty(); endIndex++) {
-        let eElement = stringValue[endIndex];
-        requiredMoreOfCharsMap.decreaseByOne(eElement);
+  for (let [r, l] = [0, 0]; r < s.length; r++) {
+    let rc = s[r];
+    let needRCount = needCountMap.get(rc)
+    if (needRCount) {
+      let haveRightCount = haveCount.get(rc)! + 1;
+      haveCount.set(rc, haveRightCount)
+      if (haveRightCount === needRCount) {
+        totalCharacterFilled++;
       }
-      if (requiredMoreOfCharsMap.isEmpty()) {
-        let newResult = stringValue.substring(startIndex, endIndex)
-        if (!result || newResult.length < result.length) {
-          result = newResult;
+    }
+    for (; totalCharacterFilled == totalCharacterNeed && l < s.length; l++) {
+      if (!result || r + 1 - l < result.length) {
+        result = s.substring(l, r + 1)
+      }
+      let lChar = s[l];
+      let needLCount = needCountMap.get(lChar);
+      if (needLCount) {
+        let haveLCount = haveCount.get(lChar)!;
+        haveCount.set(lChar, haveLCount - 1)
+        if (needLCount === haveLCount) {
+          totalCharacterFilled--;
         }
       }
-      requiredMoreOfCharsMap.increaseByOne(sElement)
     }
   }
   return result;
