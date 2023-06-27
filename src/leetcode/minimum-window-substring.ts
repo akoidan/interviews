@@ -1,5 +1,3 @@
-//
-
 /*
 
  https://leetcode.com/problems/minimum-window-substring/
@@ -44,29 +42,31 @@ class FindMap {
   private negativeMap: Map<string, number> = new Map();
 
   public increaseByOne(k: string) {
-    let currentValuev2 = this.negativeMap.get(k)
-    if (this.map.get(k) == undefined && currentValuev2 == undefined) {
+    let negValue = this.negativeMap.get(k)
+    let value = this.map.get(k);
+    if (value == undefined && negValue == undefined) {
       this.negativeMap.set(k, 1)
-    }
-    if (currentValuev2 != undefined) {
-      this.negativeMap.set(k, currentValuev2 + 1)
-    }
-
-    if (this.negativeMap.get(k)! >= 1) {
-      this.map.set(k, this.negativeMap.get(k)!)
+      this.map.set(k, 1)
+    } else {
+      if (negValue != undefined) {
+        this.negativeMap.set(k, negValue + 1)
+      }
+      if (negValue! >= 0) {
+        this.map.set(k, negValue! + 1)
+      }
     }
   }
 
   public decreaseByOne(k: string) {
-    let currentValue = this.map.get(k)
-    if (currentValue === 1) {
+    let negativeValue = this.negativeMap.get(k)
+    if (negativeValue == 1) {
       this.map.delete(k);
-    } else if (currentValue) {
-      this.map.set(k, currentValue - 1)
-    }
-    let currentValuev2 = this.negativeMap.get(k)
-    if (currentValuev2 != undefined) {
-      this.negativeMap.set(k, currentValuev2 - 1)
+      this.negativeMap.set(k, 0)
+    } else if (negativeValue! > 1) {
+      this.map.set(k, negativeValue! - 1)
+      this.negativeMap.set(k, negativeValue! - 1)
+    } else {
+       this.negativeMap.set(k, negativeValue! - 1)
     }
   }
 
@@ -79,19 +79,15 @@ class FindMap {
   }
 }
 
-export function
-
-minWindow(stringValue: string, t: string): string {
+export function minWindow(stringValue: string, t: string): string {
   // Input: s = "ADOBECODEBANC", t = "ABC"
   // Output: "BANC"
+  let requiredMoreOfCharsMap = new FindMap();
+  for (let p of t) {
+    requiredMoreOfCharsMap.increaseByOne(p);
+  }
 
-  let requiredMoreOfCharsMap = [...t].reduce((p, c) => {
-    p.increaseByOne(c)
-    return p;
-  }, new FindMap())
-
-// aa a=2
-  let result = null;
+  let result = "";
   let endIndex = 0;
   for (let startIndex = 0; startIndex < stringValue.length; startIndex++) {
     let sElement = stringValue[startIndex];
@@ -109,5 +105,5 @@ minWindow(stringValue: string, t: string): string {
       requiredMoreOfCharsMap.increaseByOne(sElement)
     }
   }
-  return result || "";
+  return result;
 }
