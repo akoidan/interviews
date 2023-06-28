@@ -6,7 +6,7 @@
       "@/*": ["src/*"]
     },
     "typeRoots": ["./node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "lib": ["es2019", "dom"],
     "declaration": false,
     "target": "es6",
     "emitDecoratorMetadata": true,
