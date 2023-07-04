@@ -1,17 +1,14 @@
 export class TreeNode {
-  val: number
-  left: TreeNode | null
-  right: TreeNode | null
-
-  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = (val === undefined ? 0 : val)
-    this.left = (left === undefined ? null : left)
-    this.right = (right === undefined ? null : right)
+  constructor(
+    public val: number,
+    public left: TreeNode | null = null,
+    public right: TreeNode | null = null
+  ) {
   }
 }
 
 export function convertArrayToTree(arr: (number | null)[]) {
-  let root = new TreeNode(arr.shift()!, undefined, undefined);
+  let root = new TreeNode(arr.shift()!);
   let prevLevel = [root];
   while (arr.length) {
     let newLevel: TreeNode[] = [];
