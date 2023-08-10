@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { maxArea } from "../src/leetcode/container-with-most-water";
+import { maxArea } from "../ts/leetcode/container-with-most-water";
 
 
 describe("container-with-most-water", () => {

@@ -54,7 +54,7 @@
  https://leetcode.com/problems/car-fleet/
  *  */
 import {expect} from "chai";
-import {carFleet} from "../src/leetcode/car-fleet";
+import {carFleet} from "../ts/leetcode/car-fleet";
 
 describe("car-fleet", () => {
   it("[10, 8, 0, 5, 3] 3", () => {

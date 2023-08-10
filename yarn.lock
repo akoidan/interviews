@@ -970,6 +970,11 @@
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
 
+"@types/deep-equal-in-any-order@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@types/deep-equal-in-any-order/-/deep-equal-in-any-order-1.0.1.tgz#0559d855797a5034e187f248b23a4490e5444f2e"
+  integrity sha512-hUWUUE53WjKfcCncSmWmNXVNNT+0Iz7gYFnov3zdCXrX3Thxp1Cnmfd5LwWOeCVUV5LhpiFgS05vaAG72doo9w==
+
 "@types/eslint-scope@^3.7.0":
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.0.tgz#4792816e31119ebd506902a482caec4951fabd86"
@@ -1416,6 +1421,14 @@ array-flatten@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-1.1.1.tgz#9a5f699051b1e7073328f2a008968b64ea2955d2"
   integrity sha1-ml9pkFGx5wczKPKgCJaLZOopVdI=
+
+array-to-tree@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/array-to-tree/-/array-to-tree-3.3.2.tgz#06da2f3815a906a99aaa5ad793a39114db36da52"
+  integrity sha512-EmWeZgl7Kkb9eeaBi9GZq4X4wyxpW2UC8YsmSShx1cX19n7H1R59CszyC5+nERYgpCQi9EBSDgCZ9fWUyXCHyQ==
+  dependencies:
+    lodash.keyby "^4.6.0"
+    nested-property "^0.0.7"
 
 array-union@^1.0.1, array-union@^1.0.2:
   version "1.0.2"
@@ -2095,6 +2108,14 @@ deep-eql@^3.0.1:
   integrity sha512-+QeIQyN5ZuO+3Uk5DYh6/1eKO0m0YmJFGNmFHGACpf1ClL1nmlV/p4gNgbl2pJGxgXb4faqo6UE+M5ACEMyVcw==
   dependencies:
     type-detect "^4.0.0"
+
+deep-equal-in-any-order@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/deep-equal-in-any-order/-/deep-equal-in-any-order-2.0.6.tgz#9fb208dfc6836e35e2d4c942db85fc291820318a"
+  integrity sha512-RfnWHQzph10YrUjvWwhd15Dne8ciSJcZ3U6OD7owPwiVwsdE5IFSoZGg8rlwJD11ES+9H5y8j3fCofviRHOqLQ==
+  dependencies:
+    lodash.mapvalues "^4.6.0"
+    sort-any "^2.0.0"
 
 deep-extend@^0.6.0, deep-extend@~0.6.0:
   version "0.6.0"
@@ -3666,10 +3687,25 @@ lodash.get@^4.4.2:
   resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
   integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
 
+lodash.keyby@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.keyby/-/lodash.keyby-4.6.0.tgz#7f6a1abda93fd24e22728a4d361ed8bcba5a4354"
+  integrity sha512-PRe4Cn20oJM2Sn6ljcZMeKgyhTHpzvzFmdsp9rK+6K0eJs6Tws0MqgGFpfX/o2HjcoQcBny1Eik9W7BnVTzjIQ==
+
+lodash.mapvalues@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
+  integrity sha512-JPFqXFeZQ7BfS00H58kClY7SPVeHertPE0lNuCyZ26/XlN8TvakYD7b9bGyNmXbT/D3BbtPAAmq90gPWqLkxlQ==
+
 lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 log-symbols@4.0.0, log-symbols@^4.0.0:
   version "4.0.0"
@@ -3979,6 +4015,11 @@ neo-async@^2.5.0, neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+nested-property@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/nested-property/-/nested-property-0.0.7.tgz#ff222f233ca8793c6828b4117091bea597130f4f"
+  integrity sha512-XamePAu09Y95kcimkF+CXDf69Iov+qaM+GyXCw5Ysoa8Q5r7RgehRn99bkxyYHpXs3ZcZdm7QyjRV52nYpNw5Q==
 
 nice-try@^1.0.4:
   version "1.0.5"
@@ -4966,6 +5007,13 @@ snapdragon@^0.8.1:
     source-map "^0.5.6"
     source-map-resolve "^0.5.0"
     use "^3.1.0"
+
+sort-any@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/sort-any/-/sort-any-2.0.0.tgz#62a5409c9905c9483f03e41e17f46cc451aa7c55"
+  integrity sha512-T9JoiDewQEmWcnmPn/s9h/PH9t3d/LSWi0RgVmXSuDYeZXTZOZ1/wrK2PHaptuR1VXe3clLLt0pD6sgVOwjNEA==
+  dependencies:
+    lodash "^4.17.21"
 
 source-list-map@^2.0.1:
   version "2.0.1"

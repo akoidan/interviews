@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "resolveJsonModule": true,
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["ts/*"]
     },
     "typeRoots": ["./node_modules/@types"],
     "lib": ["es2019", "dom"],
@@ -25,8 +25,8 @@
     "moduleResolution": "node"
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.vue"
+    "ts/**/*.ts",
+    "ts/**/*.vue"
   ],
   "exclude": [
     "node_modules"

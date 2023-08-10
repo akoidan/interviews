@@ -1,4 +1,4 @@
-import {A, changeLinkedListDirection, createLinkedList, iterateList} from "../src/listTask";
+import {A, changeLinkedListDirection, createLinkedList, iterateList} from "../ts/listTask";
 import {expect} from "chai";
 
 

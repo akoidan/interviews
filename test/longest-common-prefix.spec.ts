@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {longestCommonPrefix} from "src/leetcode/longest-common-prefix";
+import {longestCommonPrefix} from "ts/leetcode/longest-common-prefix";
 
 describe("longestCommonPrefix", () => {
   it("[\"flower\",\"flow\",\"flight\"] fl", () => {

@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {findMedianSortedArrays} from "../src/leetcode/median-two-sorted-arrays";
+import {findMedianSortedArrays} from "../ts/leetcode/median-two-sorted-arrays";
 
 // nums1 = [1,3], nums2 = [2]
 describe("median-two-sorted-arrays", () => {

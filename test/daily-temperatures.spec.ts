@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { dailyTemperatures } from "../src/leetcode/daily-temperatures";
+import { dailyTemperatures } from "../ts/leetcode/daily-temperatures";
 
 describe("daily-temperatures", () => {
   it("[73,74,75,71,69,72,76,73]", () => {

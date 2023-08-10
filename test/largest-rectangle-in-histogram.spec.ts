@@ -54,7 +54,7 @@
  https://leetcode.com/problems/car-fleet/
  *  */
 import {expect} from "chai";
-import {largestRectangleArea} from "../src/leetcode/largest-rectangle-in-histogram";
+import {largestRectangleArea} from "../ts/leetcode/largest-rectangle-in-histogram";
 
 describe("largest-rectangle-in-histogram", () => {
   it("[2,1,5,6,2,3]", () => {

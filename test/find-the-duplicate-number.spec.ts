@@ -1,4 +1,4 @@
-import {findDuplicate} from "src/leetcode/find-the-duplicate-number";
+import {findDuplicate} from "ts/leetcode/find-the-duplicate-number";
 import {expect} from "chai";
 
 describe("find-the-duplicate-number", () => {

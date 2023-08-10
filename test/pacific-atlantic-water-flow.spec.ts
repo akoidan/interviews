@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {pacificAtlantic} from "../src/leetcode/pacific-atlantic-water-flow";
+import {pacificAtlantic} from "../ts/leetcode/pacific-atlantic-water-flow";
 import * as deepEqualInAnyOrder from 'deep-equal-in-any-order';
 import {use} from 'chai';
 

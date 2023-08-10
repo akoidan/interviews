@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { getIntersectionFloyd, LinkedList } from "../src/leetcode/floyd";
+import { getIntersectionFloyd, LinkedList } from "../ts/leetcode/floyd";
 
 describe("getIntersectionFloyd", () => {
   it("0-7 = 5", () => {

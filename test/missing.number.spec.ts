@@ -1,8 +1,8 @@
 import * as chaiAsPromised from "chai-as-promised"; // eslint-disable-line import/no-namespace
 import * as sinonChai from "sinon-chai"; // eslint-disable-line import/no-namespace
 import { expect, use } from "chai";
-import { findErrorNums } from 'src/leetcode/mismatch';
-import { missingNumber } from 'src/leetcode/missing.number';
+import { findErrorNums } from 'ts/leetcode/mismatch';
+import { missingNumber } from 'ts/leetcode/missing.number';
 
 use(sinonChai);
 use(chaiAsPromised);

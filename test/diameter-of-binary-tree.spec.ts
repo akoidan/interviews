@@ -1,6 +1,6 @@
 import { expect } from "chai";
-import { diameterOfBinaryTree } from "../src/leetcode/diameter-of-binary-tree";
-import {convertArrayToTree} from "src/leetcode/tree";
+import { diameterOfBinaryTree } from "../ts/leetcode/diameter-of-binary-tree";
+import {convertArrayToTree} from "ts/leetcode/tree";
 
 
 describe("diameter-of-binary-tree.spec", () => {

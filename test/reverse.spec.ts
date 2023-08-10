@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {reverseArray, rotate} from "../src/reverse";
+import {reverseArray, rotate} from "../ts/reverse";
 
 describe("reverse.ts", () => {
   it("should reverse an array", () => {

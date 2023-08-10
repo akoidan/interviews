@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {addTwoNumbers, ListNode2} from "../src/leetcode/two-linked-list-numbers";
+import {addTwoNumbers, ListNode2} from "../ts/leetcode/two-linked-list-numbers";
 
 describe("linked list two numbers", () => {
   it("Same length: [2,4,3], [5,6,4] -> [7,0,8]", () => {

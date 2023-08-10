@@ -4,7 +4,7 @@ import {
   expect,
   use
 } from "chai";
-import {findMedianSortedArrays} from 'src/leetcode/median';
+import {findMedianSortedArrays} from 'ts/leetcode/median';
 
 use(sinonChai);
 use(chaiAsPromised);

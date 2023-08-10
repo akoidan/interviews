@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {isPalindrome} from "../src/leetcode/palindrome";
+import {isPalindrome} from "../ts/leetcode/palindrome";
 
 describe("palindrome number", () => {
   it("121 true", () => {

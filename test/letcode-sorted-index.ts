@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {getSum} from "../src/letcode-sorted-index";
+import {getSum} from "../ts/letcode-sorted-index";
 
 describe("letcode index", () => {
   it("should return correct value", () => {

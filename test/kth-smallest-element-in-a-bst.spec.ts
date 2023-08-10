@@ -54,8 +54,8 @@
  https://leetcode.com/problems/car-fleet/
  *  */
 import {expect} from "chai";
-import {kthSmallest} from "../src/leetcode/kth-smallest-element-in-a-bst";
-import {convertArrayToTree} from "src/leetcode/tree";
+import {kthSmallest} from "../ts/leetcode/kth-smallest-element-in-a-bst";
+import {convertArrayToTree} from "ts/leetcode/tree";
 
 describe("kth-smallest-element-in-a-bst", () => {
   it("1234 1", () => {

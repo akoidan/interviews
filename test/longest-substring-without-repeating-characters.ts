@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {lengthOfLongestSubstring} from "../src/leetcode/longest-substring-without-repeating-characters";
+import {lengthOfLongestSubstring} from "../ts/leetcode/longest-substring-without-repeating-characters";
 
 describe("letcode longest-substring-without-repeating-characters", () => {
   it("a = 1", () => {

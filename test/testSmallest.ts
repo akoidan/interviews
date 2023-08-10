@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { findSmallest } from "../src/smallestInt";
+import { findSmallest } from "../ts/smallestInt";
 
 
 describe("smallestInt", () => {

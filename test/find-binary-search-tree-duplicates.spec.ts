@@ -2,7 +2,7 @@ import {expect} from "chai";
 import {
   findMode,
   TreeNode
-} from "../src/leetcode/find-finary-search-tree-duplicates";
+} from "../ts/leetcode/find-finary-search-tree-duplicates";
 
 describe("find-binary-search-tree-duplicates.spec", () => {
   it("[1,null,2,2] == [2]", () => {

@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {maxAreaOfIsland} from "../src/leetcode/max-area-of-island";
+import {maxAreaOfIsland} from "../ts/leetcode/max-area-of-island";
 
 describe("max-area-of-island", () => {
   it("6", () => {

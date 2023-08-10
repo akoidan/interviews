@@ -1,4 +1,4 @@
-import {splitWords, VueComponent} from "../src/uniqueWordsCount";
+import {splitWords, VueComponent} from "../ts/uniqueWordsCount";
 import {expect} from "chai";
 
 describe("uniqueWordsCount", () => {

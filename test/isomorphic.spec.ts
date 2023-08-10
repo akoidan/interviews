@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {isIsomorphic} from "../src/isomorphic";
+import {isIsomorphic} from "../ts/isomorphic";
 
 describe("Isomorphic", () => {
   it("returns true for isomorphic strings", () => {

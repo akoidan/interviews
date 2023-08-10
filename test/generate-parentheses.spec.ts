@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { generateParenthesis } from "../src/leetcode/generate-parentheses";
+import { generateParenthesis } from "../ts/leetcode/generate-parentheses";
 
 
 describe("container-with-most-water", () => {

@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {threeSum} from "../src/leetcode/thre-sum";
+import {threeSum} from "../ts/leetcode/thre-sum";
 import * as threeSummValues from "./three-sum.json"
 import * as threeSummResult from "./three-sum-result.json"
 

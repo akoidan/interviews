@@ -54,7 +54,7 @@
  https://leetcode.com/problems/car-fleet/
  *  */
 import {expect} from "chai";
-import {findRedundantConnection} from "../src/leetcode/redundant-connection";
+import {findRedundantConnection} from "../ts/leetcode/redundant-connection";
 
 describe("redundant-connection", () => {
   it("[[1,2],[1,3],[2,3]]", () => {

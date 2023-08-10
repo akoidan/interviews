@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import { solution } from "../src/graph";
+import { solution } from "../ts/graph";
 
 
 describe("graph", () => {

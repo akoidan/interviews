@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {minWindow} from "src/leetcode/minimum-window-substring";
+import {minWindow} from "ts/leetcode/minimum-window-substring";
 
 describe("76. Minimum Window Substring", () => {
   it("ADOBECODEBANC, ABC -> BANC", () => {

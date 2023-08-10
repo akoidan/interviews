@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {calculate} from "../src/reversePolish";
+import {calculate} from "../ts/reversePolish";
 
 describe("reversePolish.ts", () => {
   it(`["2", "1", "+", "3", "*"] -> ((2 + 1) * 3) -> 9`, () => {

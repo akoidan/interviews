@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {romanToInt} from "../src/leetcode/roman-to-int";
+import {romanToInt} from "../ts/leetcode/roman-to-int";
 
 describe("rom to int", () => {
   it("I === 1", () => {

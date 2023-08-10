@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {twoSum} from "../src/leetcode/two-sum";
+import {twoSum} from "../ts/leetcode/two-sum";
 
 describe("two sum", () => {
   it("[2,7,11,15] -> 9", () => {
