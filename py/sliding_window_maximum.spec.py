@@ -1,5 +1,5 @@
 import unittest
-from py.solution import Solution
+from py.sliding_window_maximum import Solution
 class TestStringMethods(unittest.TestCase):
 
     def test_upper(self):
