@@ -51,4 +51,13 @@ class Solution:
             if min_value_node.node.next is not None:
                 heapq.heappush(list_info, NodeInfo(min_value_node.node.next, min_value_node.pos_in_input))
 
+        # while list_info:
+        #     min_value_node = list_info[0]
+        #     prev_el.next = ListNode(min_value_node.node.val)
+        #     prev_el = prev_el.next
+        #     if min_value_node.node.next is not None:
+        #         heapq.heappushpop(list_info, NodeInfo(min_value_node.node.next, min_value_node.pos_in_input))
+        #     else:
+        #         heapq.heappop(list_info)
+
         return head
