@@ -1,5 +1,6 @@
 /*
  https://leetcode.com/problems/3sum/description/
+ https://neetcode.io/problems/three-integer-sum/question?list=neetcode150
 
 
  iven an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
@@ -68,6 +69,9 @@ export function threeSum(nums: number[]): number[][] {
   nums.forEach(n => {
     setOrIncrease(map, n)
   })
+
+  // [-1,0,1,2,-1,-4]
+  // -4 -1 -1 0 1 2 
   console.log(performance.now())
   nums.sort();
   console.log(performance.now())
