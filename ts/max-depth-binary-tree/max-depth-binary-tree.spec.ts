@@ -1,5 +1,5 @@
 
-import { Solution , TreeNode} from './max-depth-binary-tree';
+import { Solution , TreeNode} from './max-depth-binary-tree-dfs-iterative';
 
 /**
  * Converts an array representation of a binary tree to TreeNode structure
