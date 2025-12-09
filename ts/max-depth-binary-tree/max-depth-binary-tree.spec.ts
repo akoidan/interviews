@@ -67,7 +67,7 @@ describe('Solution - maxDepth', () => {
 
   test('should return correct depth for left-skewed tree', () => {
     const root = arrayToTree([1, 2, null, 3, null, null, null, 4]);
-    expect(solution.maxDepth(root)).toBe(4);
+    expect(solution.maxDepth(root)).toBe(3);
   });
 
   test('should return correct depth for right-skewed tree', () => {

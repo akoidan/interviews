@@ -21,9 +21,10 @@ export class Solution {
       return 0;
     }
     const q: TreeNode[] = [root]
-    let level = 1;
+    let level = 0;
     while (q.length > 0) {
-      for (const el in q) {
+      let initialLength = q.length;
+      for (let i = 0; i < initialLength; i++) {
         let node = q.shift()!;
         if (node.left) {
           q.push(node.left)
@@ -32,7 +33,7 @@ export class Solution {
           q.push(node.right)
         }
       }
-      level ++;
+      level++;
     }
     return level;
   }
