@@ -1,5 +1,4 @@
 
-
 import { Solution , TreeNode} from './max-depth-binary-tree';
 
 /**
@@ -20,25 +19,39 @@ function arrayToTree(arr: (number | null)[]): TreeNode | null {
   }
 
   const root: TreeNode = { val: arr[0], left: null, right: null };
-  const queue: TreeNode[] = [root];
+  const queue: (TreeNode | null)[] = [root];
   let i = 1;
 
-  while (queue.length > 0 && i < arr.length) {
-    const node = queue.shift()!;
+  while (i < arr.length) {
+    const node = queue.shift();
 
-    // Process left child
-    if (i < arr.length && arr[i] !== null) {
-      node.left = { val: arr[i]!, left: null, right: null };
-      queue.push(node.left);
-    }
-    i++;
+    if (node) {
+      // Process left child
+      if (i < arr.length) {
+        if (arr[i] !== null) {
+          node.left = { val: arr[i]!, left: null, right: null };
+          queue.push(node.left);
+        } else {
+          queue.push(null);
+        }
+        i++;
+      }
 
-    // Process right child
-    if (i < arr.length && arr[i] !== null) {
-      node.right = { val: arr[i]!, left: null, right: null };
-      queue.push(node.right);
+      // Process right child
+      if (i < arr.length) {
+        if (arr[i] !== null) {
+          node.right = { val: arr[i]!, left: null, right: null };
+          queue.push(node.right);
+        } else {
+          queue.push(null);
+        }
+        i++;
+      }
+    } else {
+      // Skip null nodes but advance indices
+      if (i < arr.length) i++;
+      if (i < arr.length) i++;
     }
-    i++;
   }
 
   return root;
@@ -67,7 +80,7 @@ describe('Solution - maxDepth', () => {
 
   test('should return correct depth for left-skewed tree', () => {
     const root = arrayToTree([1, 2, null, 3, null, null, null, 4]);
-    expect(solution.maxDepth(root)).toBe(3);
+    expect(solution.maxDepth(root)).toBe(4);
   });
 
   test('should return correct depth for right-skewed tree', () => {
