@@ -8,13 +8,6 @@
 
 
 export class Solution {
-  // DFS
-  // maxDepth(root: TreeNode|null): number {
-  //   if (!root) {
-  //     return 0;
-  //   }
-  //   return Math.max(this.maxDepth(root.left), this.maxDepth(root.right)) + 1;
-  // }
 
   maxDepth(root: TreeNode|null): number {
     if (!root) {
