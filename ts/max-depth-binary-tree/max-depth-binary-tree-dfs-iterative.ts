@@ -7,11 +7,11 @@ export interface TreeNode {
 
 export class Solution {
   maxDepth(root: TreeNode | null): number {
-    if (!root) {
-      return 0;
+    const stack: { depth: number, el: TreeNode }[] = [];
+    if (root) {
+      stack.push({el: root, depth: 1})
     }
-    const stack: { depth: number, el: TreeNode }[] = [{depth: 1, el: root}];
-    let res  = 1;
+    let res  = 0;
     while (stack.length) {
       const {el, depth} = stack.pop()!;
       res = Math.max(res, depth)
