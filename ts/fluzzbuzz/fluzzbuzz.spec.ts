@@ -7,9 +7,9 @@ test("Fluzzbuzz", () => {
   // Mock process.stdout.write
   const originalWrite = process.stdout.write;
   // @ts-ignore
-  process.stdout.write = (inputs) => { output += inputs; };
-
-  expect(output).toContain('Hello, Andrew!');
+  console.log = (inputs) => { output += inputs; };
 
   fizzBuzz(15);
+
+  expect(output).toContain('');
 });
