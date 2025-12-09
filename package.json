@@ -6,7 +6,7 @@
   "scripts": {
     "start": "tsc --watch",
     "test": "mocha ts/*.ts",
-    "test-jest": "jest ts/fluzzbuzz/*.ts"
+    "test-jest": "jest"
   },
   "license": "MIT",
   "dependencies": {
@@ -25,6 +25,7 @@
     "null-loader": "^4.0.1",
     "sinon": "^9.1.0",
     "sinon-chai": "^3.5.0",
+    "ts-jest": "^29.4.6",
     "ts-node": "^9.0.0",
     "tsc": "^2.0.4",
     "tsconfig-paths": "^3.9.0",

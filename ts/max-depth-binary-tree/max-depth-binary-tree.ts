@@ -1,13 +1,13 @@
 
 
- interface TreeNode {
+ export interface TreeNode {
   val: number;
   left: TreeNode | null;
   right: TreeNode | null;
  }
 
 
-class Solution {
+export class Solution {
   // DFS
   // maxDepth(root: TreeNode|null): number {
   //   if (!root) {
