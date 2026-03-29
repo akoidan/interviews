@@ -1,0 +1,12 @@
+import { maxArea } from "../container-with-most-water/container-with-most-water";
+
+
+describe("container-with-most-water", () => {
+  it("[1,8,6,2,5,4,8,3,7] = 49", () => {
+    expect(maxArea([1,8,6,2,5,4,8,3,7])).toBe(49)
+  });
+});
+
+
+
+

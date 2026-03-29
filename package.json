@@ -2,11 +2,9 @@
   "name": "typescript-test",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "start": "tsc --watch",
-    "test": "mocha ts/*.ts",
-    "test-jest": "jest"
+    "test": "jest"
   },
   "license": "MIT",
   "dependencies": {
@@ -25,7 +23,6 @@
     "null-loader": "^4.0.1",
     "sinon": "^9.1.0",
     "sinon-chai": "^3.5.0",
-    "ts-jest": "^29.4.6",
     "ts-node": "^9.0.0",
     "tsc": "^2.0.4",
     "tsconfig-paths": "^3.9.0",
@@ -34,8 +31,11 @@
     "webpack-cli": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.29.0",
     "@types/deep-equal-in-any-order": "^1.0.1",
     "@types/jest": "^30.0.0",
-    "deep-equal-in-any-order": "^2.0.6"
+    "babel-jest": "^30.3.0",
+    "deep-equal-in-any-order": "^2.0.6",
+    "ts-jest": "^29.4.6"
   }
 }
