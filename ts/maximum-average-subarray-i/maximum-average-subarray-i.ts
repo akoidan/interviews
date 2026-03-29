@@ -26,13 +26,10 @@ export function findMaxAverage(nums: number[], k: number): number {
   for (let i = 0; i < k; i++) {
     maxSum += nums[i]
   }
-  let prevSum = maxSum;
+  let windowSum = maxSum;
   for (let i = 1; i < nums.length - k + 1; i++) {
-    let currSum = prevSum;
-    currSum -= nums[i-1];
-    currSum += nums[i+k-1];
-    maxSum = Math.max(maxSum, currSum);
-    prevSum = currSum;
+    windowSum += nums[i + k - 1] - nums[i - 1];
+    maxSum = Math.max(maxSum, windowSum);
   }
   return maxSum / k;
 }
