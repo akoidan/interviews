@@ -1,0 +1,25 @@
+  Code:
+       0: iconst_2
+       1: anewarray     #2                  // class java/lang/Integer
+       4: dup
+       5: iconst_0
+       6: iconst_3
+       7: invokestatic  #3                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      10: aastore
+      11: dup
+      12: iconst_1
+      13: iconst_4
+      14: invokestatic  #3                  // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      17: aastore
+      18: invokestatic  #4                  // Method java/util/Arrays.asList:([Ljava/lang/Object;)Ljava/util/List;
+      21: invokeinterface #5,  1            // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      26: astore_1
+      27: aload_1
+      28: invokeinterface #6,  1            // InterfaceMethod java/util/Iterator.hasNext:()Z
+      33: ifeq          51
+      36: getstatic     #8                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      39: aload_1
+      40: invokeinterface #7,  1            // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      45: invokevirtual #9                  // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+      48: goto          27
+      51: return

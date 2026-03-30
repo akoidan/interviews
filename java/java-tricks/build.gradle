@@ -1,0 +1,27 @@
+apply plugin: 'java';
+apply plugin: 'idea'
+
+apply plugin: 'groovy'
+
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile 'javax.mail:mail:1.4'
+    compileOnly "org.projectlombok:lombok:1.12.6"
+    compile "org.springframework:spring-jdbc:2+"
+    compile "org.projectlombok:lombok:1.16.10+"
+//    compile files('/tmp/test/test.jar')
+
+}
+
+tasks.withType(JavaCompile) {
+    options.fork = true
+    options.forkOptions.executable = "/usr/lib/jvm/java-8-jdk/bin/javac"
+
+}
