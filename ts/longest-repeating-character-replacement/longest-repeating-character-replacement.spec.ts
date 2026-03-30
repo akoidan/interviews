@@ -1,4 +1,4 @@
-import { characterReplacement } from "./longest-repeating-character-replacement";
+import { characterReplacement } from "./longest-repeating-character-replacement-neetcode";
 
 describe("longest-repeating-character-replacement", () => {
   it("AABABBA k=1 -> 4", () => {
