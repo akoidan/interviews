@@ -1,6 +1,6 @@
 package binarytreelevelordertraversal
 
-func levelOrderQueue(root *TreeNode) [][]int {
+func levelOrderQueueV1(root *TreeNode) [][]int {
 	res := [][]int{}
 	if root == nil {
 		return res
@@ -25,4 +25,26 @@ func levelOrderQueue(root *TreeNode) [][]int {
 		}
 	}
 	return res
+}
+
+func levelOrderQueue(root *TreeNode) [][]int {
+	result := make([][]int, 0)
+	queue := make([]*TreeNode, 0)
+	queue = append(queue, root)
+	for len(queue) > 0 {
+		prevQueueLength := len(queue)
+		currentLevel := make([]int, 0)
+		for i := 0; i < prevQueueLength; i++ {
+			currentLevel = append(currentLevel, queue[i].Val)
+			if queue[i].Left != nil {
+				queue = append(queue, queue[i].Left)
+			}
+			if queue[i].Right != nil {
+				queue = append(queue, queue[i].Right)
+			}
+		}
+		result = append(result, currentLevel)
+		queue = queue[prevQueueLength:]
+	}
+	return result
 }
