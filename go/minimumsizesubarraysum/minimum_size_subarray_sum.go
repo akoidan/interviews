@@ -26,7 +26,7 @@ package minimumsizesubarraysum
 
 import "math"
 
-func minSubArrayLen(target int, nums []int) int {
+func minSubArrayLenMine(target int, nums []int) int {
 	l := 0
 	sum := 0
 	minLength := math.MaxInt
@@ -40,6 +40,24 @@ func minSubArrayLen(target int, nums []int) int {
 			l++
 		}
 		minLength = min(minLength, r-l+1)
+	}
+	if minLength == math.MaxInt {
+		return 0
+	}
+	return minLength
+}
+
+func minSubArrayLen(target int, nums []int) int {
+	l := 0
+	sum := 0
+	minLength := math.MaxInt
+	for r, rv := range nums {
+		sum += rv
+		for sum >= target {
+			minLength = min(minLength, r-l+1)
+			sum -= nums[l]
+			l++
+		}
 	}
 	if minLength == math.MaxInt {
 		return 0
