@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math"
 	"runtime"
+	"testing"
 	"time"
 )
 
@@ -91,16 +92,13 @@ func stackDeffer() {
 	fmt.Println("All deffers are stacked")
 
 }
-func main() {
-	fmt.Println("Starting program")
-	//fmt.Println(fullFor(100))
-	//fmt.Println(while(100))
-	//fmt.Println(forever(100))
-	//ifStatement(2.0)
-	//fmt.Printf("Newton's  %v, Math: %v", sqrt(4,4), math.Sqrt(4))
-	//switchStatement()
-
-	//isSaturdaySoon()
+func TestForIfDeferSwitch(t *testing.T) {
+	fmt.Println(fullFor(100))
+	fmt.Println(while(100))
+	fmt.Println(forever(100))
+	ifStatement(2.0)
+	fmt.Printf("Newton's  %v, Math: %v\n", sqrt(4, 4), math.Sqrt(4))
+	switchStatement()
+	isSaturdaySoon()
 	stackDeffer()
-	fmt.Println("Main is finished")
 }

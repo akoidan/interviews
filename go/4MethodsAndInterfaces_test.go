@@ -1,7 +1,10 @@
 package main
 
 //TODO https://tour.golang.org/methods/6
-import "fmt"
+import (
+	"fmt"
+	"testing"
+)
 
 type XYVertex struct {
 	x int
@@ -45,6 +48,6 @@ func testMethds() {
 	fmt.Println(v.Abs(), Abs(v), d, f)
 }
 
-func main() {
+func TestMethodsAndInterfaces(t *testing.T) {
 	testMethds()
 }

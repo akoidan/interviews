@@ -4,7 +4,8 @@ package main
 import (
 	"fmt"
 	"strings"
-	"golang.org/x/tour/pic"
+	"testing"
+
 	"golang.org/x/tour/wc"
 )
 
@@ -185,7 +186,7 @@ func sliceCapacityLenTest() {
 func zeroSlice() {
 	mySlice := []int{}
 	var mySlice2 []int
-	fmt.Println("MySlice : %v, cap: %v, len: %v", mySlice, cap(mySlice), len(mySlice))
+	fmt.Printf("MySlice : %v, cap: %v, len: %v\n", mySlice, cap(mySlice), len(mySlice))
 	if mySlice == nil {
 		fmt.Println("mySlice's nil")
 	}
@@ -245,9 +246,7 @@ func getPic(dx,dy int) (result [][]uint8){
 	return
 }
 
-func drawPic() {
-	pic.Show(getPic)
-}
+// drawPic opens a browser window — skipped in tests
 
 func sliceIterRange() {
 	slice := []int{2,4,8,16,32}
@@ -262,24 +261,21 @@ func sum(a int, b int) int {
 
 
 
-func main() {
-	//basicPointer()
-	//structTest()
-	//slicesTest()
-	//anotherSliceTest()
-	//sliceStruct()
-	//sliceCapacityLenTest()
-	//zeroSlice()
-	//builtinMake();
-	//arrayAutoCount()
-	//builtinMake()
-	//multiDimensionSlice()
-	//sliceIterRange()
-	//drawPic()
-	//testMap()
-	//wcTest();
-	//funValueTest()
-	//testClosureFunc()
+func TestPointers(t *testing.T) {
+	basicPointer()
+	structTest()
+	slicesTest()
+	anotherSliceTest()
+	sliceCapacityLenTest()
+	zeroSlice()
+	builtinMake()
+	arrayAutoCount()
+	multiDimensionSlice()
+	sliceIterRange()
+	testMap()
+	wcTest()
+	funValueTest()
+	testClosureFunc()
 	fibonacciTest()
 }
 
