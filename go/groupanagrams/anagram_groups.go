@@ -1,5 +1,7 @@
 package groupanagrams
 
+// https://neetcode.io/problems/anagram-groups/question
+
 func groupAnagrams(strs []string) [][]string {
 	results := [][]string{}
 	allString := make(map[[26]int][]string)
