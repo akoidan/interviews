@@ -18,8 +18,8 @@ func (s *MinStackNeet) Push(val int) {
 		s.min = val
 		s.stack = append(s.stack, 0)
 	} else if val < s.min {
+		s.stack = append(s.stack, val-s.min)
 		s.min = val
-		s.stack = append(s.stack, val-s.stack[len(s.stack)-1])
 	} else {
 		s.stack = append(s.stack, val-s.min)
 	}
