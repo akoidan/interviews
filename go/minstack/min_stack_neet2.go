@@ -9,11 +9,12 @@ type MinStackNeet2 struct {
 
 // super nasty solution with 0(1) extra memory
 // push element      -> 3 -> 2 -> 4 -> -1
+// stack result      -> 0 ->-1 -> 2 -> -3
+// min element       -> 3 -> 2 -> 2 -> -1
+
+// /  if on top of stack element is negative -> this is how newMin is less than oldMin (element is pushed = current min)
 //
-//	0 ->-1 -> 2 -> -1
-//
-// if last stack element is < 0, this means this on this step new min element arrived
-// if lastStack > 0 -> topElement = lastStackElement + minElement
+//	if on top of stack element is positive -> this element + of Stack = element that we pushed
 func (s *MinStackNeet2) Push(val int) {
 	if len(s.stack) == 0 {
 		s.min = val
