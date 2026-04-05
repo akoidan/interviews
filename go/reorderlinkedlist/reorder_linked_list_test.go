@@ -23,3 +23,27 @@ func TestReorderList3(t *testing.T) {
 	reorderList(head)
 	assert.Equal(t, []int{0, 6, 1, 5, 2, 4, 3}, toSlice(head))
 }
+
+func TestReorderList4(t *testing.T) {
+	head := newList([]int{0})
+	reorderList(head)
+	assert.Equal(t, []int{0}, toSlice(head))
+}
+
+func TestReorderList5(t *testing.T) {
+	head := newList([]int{0, 2})
+	reorderList(head)
+	assert.Equal(t, []int{0, 2}, toSlice(head))
+}
+
+func TestReorderList6(t *testing.T) {
+	head := newList([]int{0, 1, 2})
+	reorderList(head)
+	assert.Equal(t, []int{0, 2, 1}, toSlice(head))
+}
+
+func TestReorderList7(t *testing.T) {
+	head := newList([]int{0, 1, 2, 3})
+	reorderList(head)
+	assert.Equal(t, []int{0, 3, 1, 2}, toSlice(head))
+}

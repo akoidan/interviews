@@ -2,7 +2,45 @@ package reorderlinkedlist
 
 // https://neetcode.io/problems/reorder-linked-list/question
 
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+
 func reorderList(head *ListNode) {
+	slow := head
+	fast := head
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	prev := slow
+	var cur *ListNode = nil
+	if slow != nil {
+		cur = slow.Next
+	}
+	for cur != nil {
+		tmp := cur.Next
+		cur.Next = prev
+		prev = cur
+		cur = tmp
+	}
+	r := prev
+	l := head
+	for l != r {
+		tmp := l.Next
+		l.Next = r
+		l = r
+		r = tmp
+	}
+	r.Next = nil
+
+}
+
+func reorderListv2(head *ListNode) {
 	length := 0
 	for cr := head; cr.Next != nil; cr = cr.Next {
 		length++
@@ -30,11 +68,12 @@ func reorderList(head *ListNode) {
 			l = tmp
 			il = false
 		} else {
-			tmp := l.Next
-			l.Next = r
-			l = tmp
+			tmp := r.Next
+			r.Next = l
+			r = tmp
 			il = true
 		}
 	}
+	r.Next = nil
 	println(n)
 }
