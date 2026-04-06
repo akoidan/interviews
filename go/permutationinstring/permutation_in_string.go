@@ -1,5 +1,7 @@
 package permutationinstring
 
+// checkInclusion returns true if any rearrangement of s1's characters exists as a contiguous substring of s2.
+// https://neetcode.io/problems/permutation-string/question?list=neetcode150
 func checkInclusion(s1 string, s2 string) bool {
 	required := [26]int{}
 	for _, s := range s1 {
