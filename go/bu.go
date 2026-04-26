@@ -1,10 +1,11 @@
 type Node struct {
 	Children map[rune]Node 
 	IsEnd bool
+	Word string
 }
 
 type Point struct {
-	y,x int
+	y, x int
 }
 
 func findWords(board [][]byte, words []string) []string {
@@ -18,59 +19,69 @@ func findWords(board [][]byte, words []string) []string {
 	}
 	root := Node {
 		Children: make(map[rune]Node),
+		IsEnd: false,
+		Word: "",
 	}
 	exists := make(map[string]bool)
+	savedNode := root
     for _, word := range words {
 		cur := root
 		for index, char := range word {
 			fmt.Printf("%d,", char)
-			currValue, ok := cur.Children[char]
+			_, ok := cur.Children[char]
+			isEnd := index == len(word) -1
 			if !ok {
+				fmt.Printf("-%s+%s!!!",cur.Word, string(char))
+
 				cur.Children[char] = Node {
 					Children: make(map[rune]Node),
-					IsEnd: index == len(word) -1,
+					IsEnd: isEnd,
+					Word: cur.Word + string(char),
 				}
-			} else {
-				currValue.IsEnd = currValue.IsEnd || index == len(word) -1
 			}
 			cur = cur.Children[char]
+			cur.IsEnd = cur.IsEnd || isEnd
+			if cur.Word == "aaa" && cur.IsEnd {
+				savedNode = cur
+			}
+			fmt.Printf("%s, %v\n", cur.Word, cur.IsEnd)
 		}
-		fmt.Printf("\n")
+		fmt.Printf("%s, %v\n", savedNode.Word, savedNode.IsEnd)
+		b, _ := json.MarshalIndent(root, "", "  ")
+		fmt.Println("???")
+		fmt.Println(string(b))
+		fmt.Println("???")
 	}
 	fmt.Printf("\n\n\n")
 
-	// b, _ := json.MarshalIndent(root, "", "  ")
-	// fmt.Println("???")
-	// fmt.Println(string(b))
-	// fmt.Println("???")
-	var dfs func(point Point, visited map[Point]bool, node Node, s string) 
-	dfs = func(point Point, visited map[Point]bool, node Node, s string) {
+
+	var dfs func(point Point, visited map[Point]bool, node Node) 
+	dfs = func(point Point, visited map[Point]bool, node Node) {
 		if visited[point] || point.x < 0 || point.y < 0 || point.x >= width || point.y >= height {
-			fmt.Printf("%s%v!", s, point)
 			return
 		}
 		visited[point] = true
 		char := rune(board[point.y][point.x])
 		nextNode, ok := node.Children[char]
-		fmt.Printf("===%v===", char)
 		if !ok {
-			fmt.Printf("%s%v|",s, point)
+			fmt.Printf("%s%v|", node.Word, point)
 			return
 		}
-		fmt.Printf("%s%v\n", s,point)	
+		fmt.Printf("%s%v\n", node.Word,point)
+			
 		if nextNode.IsEnd {
-			exists[s+string(char)] = true
+			exists[nextNode.Word] = true
 		}
 		
-		dfs(Point{point.y-1, point.x}, cloneMap(visited), nextNode, s + string(char))
-		dfs(Point{point.y, point.x-1}, cloneMap(visited), nextNode, s + string(char))
-		dfs(Point{point.y+1, point.x}, cloneMap(visited), nextNode, s + string(char))
-		dfs(Point{point.y, point.x+1}, cloneMap(visited), nextNode, s + string(char))
+		dfs(Point{point.y-1, point.x}, cloneMap(visited), nextNode)
+		dfs(Point{point.y, point.x-1}, cloneMap(visited), nextNode)
+		dfs(Point{point.y+1, point.x}, cloneMap(visited), nextNode)
+		dfs(Point{point.y, point.x+1}, cloneMap(visited), nextNode)
 	}
 
 	for y := 0; y< height; y++ {
 		for x := 0; x< width; x++ {
-			dfs(Point{y,x}, make(map[Point]bool), root, "") 
+			dfs(Point{y,x}, make(map[Point]bool), root) 
 			fmt.Printf("\n\n")
 		}
 	}
@@ -88,3 +99,6 @@ func cloneMap(in map[Point]bool) map[Point]bool {
 	}
 	return res
 }
+
+//["a","b"]
+//["a","a"]
