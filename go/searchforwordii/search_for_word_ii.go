@@ -5,7 +5,7 @@
 package searchforwordii
 
 type Node struct {
-	Children [26]*Node
+	Children [26]*Node // hashmap where key is character (26 of english character) can be represented with array
 	IsEnd    bool
 	Word     string
 	Count    int
@@ -31,7 +31,7 @@ func findWords(board [][]byte, words []string) []string {
 	var dfs func(point Point, node *Node)
 	dfs = func(point Point, node *Node) {
 		if point.x < 0 || point.y < 0 || point.x >= width || point.y >= height ||
-			board[point.y][point.x] == '#' || node.Count == 0 {
+			board[point.y][point.x] == '#' || node.Count == 0 { // # - node is visited on current path
 			return
 		}
 		char := rune(board[point.y][point.x])
@@ -42,11 +42,16 @@ func findWords(board [][]byte, words []string) []string {
 
 		if !exists[nextNode.Word] && nextNode.IsEnd {
 			exists[nextNode.Word] = true
+			// --- eliminate redundant branches
+			// we keep how many times each character occurs at this position for each word
+			// if that count is 0, this means that we dont need to explore brancher further,
+			// the words next to this char has been already added
 			cur := root
 			for _, ch := range nextNode.Word {
 				cur.Count--
 				cur = cur.Children[ch-'a']
 			}
+			// ----
 		}
 		tmp := board[point.y][point.x]
 		board[point.y][point.x] = '#' // mark node as visited
@@ -55,7 +60,7 @@ func findWords(board [][]byte, words []string) []string {
 		dfs(Point{point.y, point.x - 1}, nextNode)
 		dfs(Point{point.y + 1, point.x}, nextNode)
 		dfs(Point{point.y, point.x + 1}, nextNode)
-		// mark node unvisited
+		// mark node unvisited for further searches
 		board[point.y][point.x] = tmp
 	}
 
