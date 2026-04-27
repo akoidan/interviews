@@ -8,7 +8,6 @@ type Node struct {
 	Children [26]*Node
 	IsEnd    bool
 	Word     string
-	Count    int
 }
 
 type Point struct {
@@ -24,62 +23,12 @@ func findWords(board [][]byte, words []string) []string {
 	if width == 0 {
 		return []string{}
 	}
-	root := getTrie(words)
-	// s, _ := json.MarshalIndent(root, " ", "  ")
-
-	exists := make(map[string]bool)
-	var dfs func(point Point, node *Node)
-	dfs = func(point Point, node *Node) {
-		if point.x < 0 || point.y < 0 || point.x >= width || point.y >= height ||
-			board[point.y][point.x] == '#' || node.Count == 0 {
-			return
-		}
-		char := rune(board[point.y][point.x])
-		nextNode := node.Children[char-'a']
-		if nextNode == nil {
-			return
-		}
-
-		if !exists[nextNode.Word] && nextNode.IsEnd {
-			exists[nextNode.Word] = true
-			cur := root
-			for _, ch := range nextNode.Word {
-				cur.Count--
-				cur = cur.Children[ch-'a']
-			}
-		}
-		tmp := board[point.y][point.x]
-		board[point.y][point.x] = '#' // mark node as visited
-		// it's performance less heavy due to we dont need rehashing like in set
-		dfs(Point{point.y - 1, point.x}, nextNode)
-		dfs(Point{point.y, point.x - 1}, nextNode)
-		dfs(Point{point.y + 1, point.x}, nextNode)
-		dfs(Point{point.y, point.x + 1}, nextNode)
-		// mark node unvisited
-		board[point.y][point.x] = tmp
-	}
-
-	for y := 0; y < height; y++ {
-		for x := 0; x < width; x++ {
-			dfs(Point{y, x}, root)
-		}
-	}
-	res := []string{}
-	for _, word := range words {
-		if exists[word] {
-			res = append(res, word)
-		}
-	}
-	return res
-}
-
-func getTrie(words []string) *Node {
 	root := Node{
 		Children: [26]*Node{},
 		IsEnd:    false,
 		Word:     "",
-		Count:    len(words) + 1,
 	}
+	exists := make(map[string]bool)
 	for _, word := range words {
 		cur := &root
 		for index, char := range word {
@@ -89,16 +38,50 @@ func getTrie(words []string) *Node {
 				cur.Children[char-'a'] = &Node{
 					Children: [26]*Node{},
 					IsEnd:    isEnd,
-					Count:    0,
 					Word:     cur.Word + string(char),
 				}
 			}
 			cur = cur.Children[char-'a']
 			cur.IsEnd = cur.IsEnd || isEnd
-			cur.Count++
 		}
 	}
-	return &root
+	// s, _ := json.MarshalIndent(root, " ", "  ")
+
+	visited := make(map[Point]bool, width*height)
+	var dfs func(point Point, node *Node)
+	dfs = func(point Point, node *Node) {
+		if visited[point] || point.x < 0 || point.y < 0 || point.x >= width || point.y >= height {
+			return
+		}
+		char := rune(board[point.y][point.x])
+		nextNode := node.Children[char-'a']
+		if nextNode == nil {
+			return
+		}
+
+		if nextNode.IsEnd {
+			exists[nextNode.Word] = true
+		}
+		visited[point] = true
+		dfs(Point{point.y - 1, point.x}, nextNode)
+		dfs(Point{point.y, point.x - 1}, nextNode)
+		dfs(Point{point.y + 1, point.x}, nextNode)
+		dfs(Point{point.y, point.x + 1}, nextNode)
+		visited[point] = false
+	}
+
+	for y := 0; y < height; y++ {
+		for x := 0; x < width; x++ {
+			dfs(Point{y, x}, &root)
+		}
+	}
+	res := []string{}
+	for _, word := range words {
+		if exists[word] {
+			res = append(res, word)
+		}
+	}
+	return res
 }
 
 //["a","b"]

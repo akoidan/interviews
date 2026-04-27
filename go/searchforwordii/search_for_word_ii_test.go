@@ -63,7 +63,7 @@ func TestFindWords6(t *testing.T) {
 		{'i', 'f', 'l', 'v'},
 	}, []string{"oath", "pea", "eat", "rain", "hklf", "hf"})
 	sort.Strings(result)
-	assert.Equal(t, []string{"oath", "eat", "hklf", "hf"}, result)
+	assert.ElementsMatch(t, []string{"oath", "eat", "hklf", "hf"}, result)
 }
 
 func TestFindWords5(t *testing.T) {

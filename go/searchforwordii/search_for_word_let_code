@@ -1,0 +1,81 @@
+package searchforwordii
+
+type Trie struct {
+	nodes [26]*Trie
+	word  string
+	count int
+}
+
+func Constructor() Trie {
+	return Trie{}
+}
+
+func (this *Trie) Insert(word string) {
+	for _, ch := range word {
+		index := ch - 'a'
+
+		if this.nodes[index] == nil {
+			this.nodes[index] = &Trie{}
+		}
+
+		this = this.nodes[index]
+		this.count++
+	}
+	this.word = word
+}
+
+func findWords(board [][]byte, words []string) []string {
+	result := []string{}
+	root := &Trie{}
+	rows := len(board)
+	cols := len(board[0])
+
+	for _, word := range words {
+		root.Insert(word)
+	}
+
+	var dfs func(node *Trie, r, c int)
+	dfs = func(node *Trie, r, c int) {
+		if r < 0 || r >= rows || c < 0 || c >= cols ||
+			board[r][c] == '#' {
+			return
+		}
+
+		child := node.nodes[board[r][c]-'a']
+
+		if child == nil || child.count == 0 {
+			return
+		}
+
+		if child.word != "" {
+			result = append(result, child.word)
+
+			curr := root
+
+			for _, ch := range child.word {
+				curr = curr.nodes[ch-'a']
+				curr.count--
+			}
+
+			child.word = ""
+		}
+
+		temp := board[r][c]
+		board[r][c] = '#'
+
+		dfs(child, r+1, c)
+		dfs(child, r-1, c)
+		dfs(child, r, c+1)
+		dfs(child, r, c-1)
+
+		board[r][c] = temp
+	}
+
+	for r := range board {
+		for c := range board[r] {
+			dfs(root, r, c)
+		}
+	}
+
+	return result
+}
