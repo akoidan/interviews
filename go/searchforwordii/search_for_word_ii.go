@@ -56,7 +56,6 @@ func findWords(board [][]byte, words []string) []string {
 		if visited[point] || point.x < 0 || point.y < 0 || point.x >= width || point.y >= height {
 			return
 		}
-		visited[point] = true
 		char := rune(board[point.y][point.x])
 		nextNode, ok := node.Children[char]
 		if !ok {
@@ -66,11 +65,16 @@ func findWords(board [][]byte, words []string) []string {
 		if nextNode.IsEnd {
 			exists[nextNode.Word] = true
 		}
-
-		dfs(Point{point.y - 1, point.x}, cloneMap(visited), nextNode)
-		dfs(Point{point.y, point.x - 1}, cloneMap(visited), nextNode)
-		dfs(Point{point.y + 1, point.x}, cloneMap(visited), nextNode)
-		dfs(Point{point.y, point.x + 1}, cloneMap(visited), nextNode)
+		bottom := Point{point.y + 1, point.x}
+		left := Point{point.y, point.x - 1}
+		top := Point{point.y - 1, point.x}
+		right := Point{point.y, point.x + 1}
+		visited[point] = true
+		dfs(top, visited, nextNode)
+		dfs(left, visited, nextNode)
+		dfs(bottom, visited, nextNode)
+		dfs(right, visited, nextNode)
+		visited[point] = false
 	}
 
 	for y := 0; y < height; y++ {
@@ -83,14 +87,6 @@ func findWords(board [][]byte, words []string) []string {
 		if exists[word] {
 			res = append(res, word)
 		}
-	}
-	return res
-}
-
-func cloneMap(in map[Point]bool) map[Point]bool {
-	res := map[Point]bool{}
-	for k, v := range in {
-		res[k] = v
 	}
 	return res
 }

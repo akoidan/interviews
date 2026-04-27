@@ -54,3 +54,26 @@ func TestFindWords4(t *testing.T) {
 	sort.Strings(result)
 	assert.Equal(t, words, result)
 }
+
+func TestFindWords6(t *testing.T) {
+	result := findWords([][]byte{
+		{'o', 'a', 'a', 'n'},
+		{'e', 't', 'a', 'e'},
+		{'i', 'h', 'k', 'r'},
+		{'i', 'f', 'l', 'v'},
+	}, []string{"oath", "pea", "eat", "rain", "hklf", "hf"})
+	sort.Strings(result)
+	assert.Equal(t, []string{"oath", "eat", "hklf", "hf"}, result)
+}
+
+func TestFindWords5(t *testing.T) {
+	board := [][]byte{
+		{'a', 'b', 'c', 'e'},
+		{'x', 'x', 'c', 'd'},
+		{'x', 'x', 'b', 'a'},
+	}
+	words := []string{"abc", "abcd"}
+	result := findWords(board, words)
+	sort.Strings(result)
+	assert.Equal(t, words, result)
+}
