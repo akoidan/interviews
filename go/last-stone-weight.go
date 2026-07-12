@@ -38,15 +38,45 @@ func (h *Heap) Add(a int) {
 }
 
 func (h *Heap) Top() int {
-	return h.data[len(h.data) - 1]
+	if len(h.data) > 0 {
+		return h.data[0]
+	}
+	return 0
 }
 
-func (h *Heap) TopRemove(a int) int {
-	res := h.Top()
 
-	
+func (h *Heap) Extract() int {
+	if len(h.data) == 0 {
+		return 0
+	}
+	res := h.Top()
+	last := h.data[len(h.data) - 1]
+	h.data[0] = last
+	delete(h.data, 1)
+	h.heapify(0)
 	return res
 }
+
+func (h *Heap) heapify(i int) {
+	lci := leftIndex(i)
+	rci := rightIndex(i)
+	if len(h.data) < lci  {
+		return
+	}
+	var maxI int 
+	if len(h.data) < rci {
+		maxI = rci
+	} else if h.data[lci] > h.data[rci] {
+		maxI = lci
+	} else {
+		maxI = rci
+	}
+	if h.data[i] > h.data[maxI] {
+		h.swap(maxI, i)
+		h.heapify(maxI)
+	}
+}
+
 
 func (h *Heap) checkIfSwap(i int) {
 	p := parentIndex(i)
