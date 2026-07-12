@@ -1,12 +1,34 @@
+
 // https://neetcode.io/problems/last-stone-weight/question?list=neetcode150
 func lastStoneWeight(stones []int) int {
 	heap := Heap{
-		data: make([]int, len(stones)),
+		data: make([]int, 0, len(stones)),
+	}
+	if len(stones) == 0 {
+		return 0
 	}
 	for _, e := range stones {
 		heap.Add(e)
+		fmt.Printf("%v\n", heap.data)
 	}
-	return 0
+	fmt.Printf("\n\n\n")
+	for {
+		fmt.Printf("\n new cycle %v\n", heap.data)
+		one := heap.Extract()
+		fmt.Printf("-%v\n", heap.data)
+		if one == nil {
+			return 0
+		}
+		two := heap.Extract()
+		fmt.Printf("-%v\n",heap.data)
+		if two == nil {
+			return *one
+		}
+		if *one > *two {
+			heap.Add(*one - *two)
+			fmt.Printf("+%v\n",heap.data)
+		}
+	}
 }
 
 type Heap struct {
@@ -45,34 +67,41 @@ func (h *Heap) Top() int {
 }
 
 
-func (h *Heap) Extract() int {
+func (h *Heap) Extract() *int {
+	fmt.Printf("extract from %v\n", h.data)
 	if len(h.data) == 0 {
-		return 0
+		return nil
 	}
-	res := h.Top()
+	res := h.data[0]
 	last := h.data[len(h.data) - 1]
 	h.data[0] = last
-	delete(h.data, 1)
+	h.data = h.data[:len(h.data) - 1]
+	fmt.Printf("before heap: %v\n", h.data)
 	h.heapify(0)
-	return res
+	return &res
 }
 
 func (h *Heap) heapify(i int) {
+	fmt.Printf("heapify %d\n", i)
 	lci := leftIndex(i)
 	rci := rightIndex(i)
-	if len(h.data) < lci  {
+	fmt.Printf("i:%d l:%d r:%d\n", i, lci, rci)
+	if len(h.data) <= lci  {
+		fmt.Printf("heapify finished\n")
 		return
 	}
 	var maxI int 
-	if len(h.data) < rci {
-		maxI = rci
+	if len(h.data) <= rci {
+		maxI = lci
 	} else if h.data[lci] > h.data[rci] {
 		maxI = lci
 	} else {
 		maxI = rci
 	}
-	if h.data[i] > h.data[maxI] {
+	fmt.Printf("Before if\n")
+	if h.data[i] < h.data[maxI] {
 		h.swap(maxI, i)
+		fmt.Printf("after swap %v\n", h.data)
 		h.heapify(maxI)
 	}
 }
